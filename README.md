@@ -19,11 +19,11 @@ Project folder structures:
                 ├── resource_group
                 └── vm 
 
-terraform-cc/deployments - contains the scripts to execute terraform and ansible playbook, and ansible playbook
-terraform-cc/deployments/scripts - contains the agent installation script and config file.
-terraform-cc/tf/modules - contains all the shared terraform codes for resource components.
-terraform-cc/tf/environments - contains the variable inputs for different environments, e.g. dev.tfvars
-terraform-cc/tf/deployments/virtual-machine - terraform codes for individual VM deployment  
+    terraform-cc/deployments - contains the scripts to execute terraform and ansible playbook, and ansible playbook
+    terraform-cc/deployments/scripts - contains the agent installation script and config file.
+    terraform-cc/tf/modules - contains all the shared terraform codes for resource components.
+    terraform-cc/tf/environments - contains the variable inputs for different environments, e.g. dev.tfvars
+    terraform-cc/tf/deployments/virtual-machine - terraform codes for individual VM deployment  
 
 During the VM creation, a random admin password is generated. This admin credentials will be used for security agent installation using ansible playbook.
 
@@ -42,12 +42,12 @@ When 'plan' or 'apply' parameter is specified, the script will validate the Terr
         cd ~/terraform-cc/deployments
         ./deploy-vm.sh plan
 ```
-    ### deploy the VM
+### deploy the VM
 ```bash
         cd terraform-cc/deployments
         ./deploy-vm.sh plan
 ```
-    ### remove the VM deployments completely
+### remove the VM deployments completely
 ```bash
         cd ~/terraform-cc/deployments
         ./deploy-vm.sh destroy
