@@ -44,7 +44,7 @@ When 'plan' or 'apply' parameter is specified, the script will validate the Terr
 ```
 ### deploy the VM
 ```bash
-        cd terraform-cc/deployments
+        cd ~/terraform-cc/deployments
         ./deploy-vm.sh plan
 ```
 ### remove the VM deployments completely
@@ -55,7 +55,7 @@ When 'plan' or 'apply' parameter is specified, the script will validate the Terr
 
 ## install security agent
 ```bash
-    cd terraform-cc/deployments
+    cd ~/terraform-cc/deployments
     ./install-security-agent-on-vm.sh
 ```
 ## Enhansements
