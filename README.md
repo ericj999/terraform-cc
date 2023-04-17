@@ -30,28 +30,36 @@ During the VM creation, a random admin password is generated. This admin credent
 ## Prerequsites
     install Terraform
     install Ansible
-    install azure cli
+    install azure-cli
+
+## VM deployments
+Create the variable input files with specific configurations for the environments in terraform-cc/tf/environments, e.g. dev.tfvars for dev environment, staging.tfvars for staging environment.
+To manage the VM deployment, run the following command:
+    ./deploy-vm.sh <action> [env]
+    where
+        action: plan|apply|destroy
+        env: vev/staging/prod
 
 ## Before the deployment and installation
 Run 'az login' from the command prompt before deployment. Run 'az account set ...' command to select the subscription where the resources should be created if there are multiple subscriptions in the account.
 
-## VM deployments
-When 'plan' or 'apply' parameter is specified, the script will validate the Terraform codes before performing the action.
 ### plan the VM infrastructure without actual deployment
 ```bash
         cd ~/terraform-cc/deployments
-        ./deploy-vm.sh plan
+        ./deploy-vm.sh plan dev
 ```
 ### deploy the VM
 ```bash
         cd ~/terraform-cc/deployments
-        ./deploy-vm.sh apply
+        ./deploy-vm.sh apply dev
 ```
 ### remove the VM deployments completely
 ```bash
         cd ~/terraform-cc/deployments
-        ./deploy-vm.sh destroy
+        ./deploy-vm.sh destroy dev
 ```
+
+When 'plan' or 'apply' parameter is specified, the script will validate the Terraform codes before performing the action.
 
 ## install security agent
 ```bash
