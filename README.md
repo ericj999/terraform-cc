@@ -45,7 +45,7 @@ When 'plan' or 'apply' parameter is specified, the script will validate the Terr
 ### deploy the VM
 ```bash
         cd ~/terraform-cc/deployments
-        ./deploy-vm.sh plan
+        ./deploy-vm.sh apply
 ```
 ### remove the VM deployments completely
 ```bash
