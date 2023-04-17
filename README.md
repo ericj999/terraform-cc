@@ -36,6 +36,7 @@ During the VM creation, a random admin password is generated. This admin credent
 Create the variable input files with specific configurations for the environments in terraform-cc/tf/environments, e.g. dev.tfvars for dev environment, staging.tfvars for staging environment.
 
 To manage the VM deployment, run the following command:
+
     ./deploy-vm.sh <action> [env]
     where
         action: plan|apply|destroy
