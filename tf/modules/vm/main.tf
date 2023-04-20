@@ -5,8 +5,8 @@ resource "azurerm_key_vault_secret" "admin_user" {
 }
 
 resource "random_password" "admin_pw" {
-  length  = 16
-  special = true
+  length      = 16
+  special     = true
   min_lower   = 1
   min_numeric = 1
   min_special = 1
@@ -46,15 +46,15 @@ resource "azurerm_network_interface" "main" {
 }
 
 resource "azurerm_linux_virtual_machine" "main" {
-  name                  = var.vm_name
-  location              = var.resource_group_location
-  resource_group_name   = var.resource_group_name
-  network_interface_ids = [azurerm_network_interface.main.id]
-  size                  = var.vm_size
-  admin_username        = azurerm_key_vault_secret.admin_user.value
-  admin_password        = azurerm_key_vault_secret.admin_password.value
+  name                            = var.vm_name
+  location                        = var.resource_group_location
+  resource_group_name             = var.resource_group_name
+  network_interface_ids           = [azurerm_network_interface.main.id]
+  size                            = var.vm_size
+  admin_username                  = azurerm_key_vault_secret.admin_user.value
+  admin_password                  = azurerm_key_vault_secret.admin_password.value
   disable_password_authentication = false
-  
+
   source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
@@ -65,7 +65,7 @@ resource "azurerm_linux_virtual_machine" "main" {
   os_disk {
     name                 = "${var.vm_name}-os_disk"
     caching              = "ReadWrite"
-    storage_account_type = "Standard_LRS"
+    storage_account_type = var.vm_disk_storage_account_type
   }
 
   tags = var.tags
