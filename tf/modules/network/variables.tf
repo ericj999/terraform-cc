@@ -33,6 +33,11 @@ variable "nsg_name" {
     type = string
 }
 
+variable "nsg_security_rules" {
+    description = "The security rules for the network group"
+    type = map(any)
+}
+
 variable "tags" {
     description = "Tags of the resource"
     type        = map(string)

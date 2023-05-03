@@ -18,40 +18,19 @@ resource "azurerm_network_security_group" "main" {
     location            = var.resource_group_location
     resource_group_name = var.resource_group_name
 
-    security_rule {
-        name                       = "ssh"
-        priority                   = 100
-        direction                  = "Inbound"
-        access                     = "Allow"
-        protocol                   = "Tcp"
-        source_port_range          = "*"
-        destination_port_range     = "22"
-        source_address_prefix      = "*"
-        destination_address_prefix = "*"
-    }
-
-    security_rule {
-        name                       = "https"
-        priority                   = 101
-        direction                  = "Inbound"
-        access                     = "Allow"
-        protocol                   = "Tcp"
-        source_port_range          = "*"
-        destination_port_range     = "443"
-        source_address_prefix      = "*"
-        destination_address_prefix = "*"
-    }
-
-    security_rule {
-        name                       = "Deny-all"
-        priority                   = 4096
-        direction                  = "Inbound"
-        access                     = "Deny"
-        protocol                   = "*"
-        source_port_range          = "*"
-        destination_port_range     = "*"
-        source_address_prefix      = "*"
-        destination_address_prefix = "*"
+    dynamic "security_rule" {
+        for_each = local.nsg_security_rules
+        content {
+            name                       = security_rule.key
+            priority                   = security_rule.value.priority
+            direction                  = security_rule.value.direction
+            access                     = security_rule.value.access
+            protocol                   = security_rule.value.protocol
+            source_port_range          = security_rule.value.source_port_range
+            destination_port_range     = security_rule.value.destination_port_range
+            source_address_prefix      = security_rule.value.source_address_prefix
+            destination_address_prefix = security_rule.value.destination_address_prefix
+        }
     }
     tags                = var.tags
 

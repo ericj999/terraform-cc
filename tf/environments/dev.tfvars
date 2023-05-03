@@ -8,6 +8,17 @@ subnet_name = "example-subnet"
 subnet_prefix = ["10.0.1.0/24"]
 nsg_name = "example-nsg"
 
+nsg_security_rules = {
+    ssh = {
+        priority                = 100
+        destination_port_range  = 22
+    }
+    https = {
+        priority                = 101
+        destination_port_range  = 443
+    }
+}
+
 
 vm_name = "example-vm"
 vm_size = "Standard_F2"

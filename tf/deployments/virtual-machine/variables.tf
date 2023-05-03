@@ -63,6 +63,11 @@ variable "nsg_name" {
     type = string
 }
 
+variable "nsg_security_rules" {
+    description = "The security rules for the network group"
+    type = map(any)
+}
+
 variable "vm_size" {
     description = "The SKU which should be used for this Virtual Machine"
     type = string

@@ -25,6 +25,7 @@ module "network" {
     subnet_name             = var.subnet_name
     subnet_prefix           = var.subnet_prefix
     nsg_name                = var.nsg_name
+    nsg_security_rules      = var.nsg_security_rules
     tags                    = var.tags
 }
 
